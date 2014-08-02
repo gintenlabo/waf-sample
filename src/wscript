@@ -1,0 +1,19 @@
+def options(opt):
+  pass
+
+def configure(conf):
+  pass
+
+def build(bld):
+  tests = [
+    'sample-test.cc'
+  ]
+  for test in tests:
+    target = test[0:test.rfind('.')]
+    bld.program(
+      features='gtest',
+      source=test,
+      target=target)
+
+def shutdown(ctx):
+  pass

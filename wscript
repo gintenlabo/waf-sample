@@ -4,18 +4,18 @@ VERSION = '1.0.0'
 srcdir = '.'
 blddir = 'build'
 
+subdirs='src'
+
 def options(opt):
     opt.load('compiler_cxx unittest_gtest')
+    opt.recurse(subdirs)
 
 def configure(conf):
     conf.load('compiler_cxx unittest_gtest')
+    conf.recurse(subdirs)
 
 def build(bld):
-    # ビルドの情報を書く
-    # waf build 時に呼ばれる
-    pass
+    bld.recurse(subdirs)
 
 def shutdown(ctx):
-    # 終了時に何かをさせたいとき
-    # 最後に呼ばれる
-    pass
+    ctx.recurse(subdirs)
