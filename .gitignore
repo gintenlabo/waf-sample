@@ -7,3 +7,4 @@ build/
 .waf-*
 .waf3-*
 .lock-*
+.unittest-gtest/

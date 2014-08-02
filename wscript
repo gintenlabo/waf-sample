@@ -5,14 +5,10 @@ srcdir = '.'
 blddir = 'build'
 
 def options(opt):
-    # プロジェクトのオプションを設定する
-    # 最初に呼ばれる
-    pass
+    opt.load('compiler_cxx unittest_gtest')
 
 def configure(conf):
-    # ライブラリのチェックなど
-    # waf configure 時に呼ばれる
-    pass
+    conf.load('compiler_cxx unittest_gtest')
 
 def build(bld):
     # ビルドの情報を書く
