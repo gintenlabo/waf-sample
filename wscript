@@ -4,7 +4,7 @@ VERSION = '1.0.0'
 srcdir = '.'
 blddir = 'build'
 
-def set_options(opt):
+def options(opt):
     # プロジェクトのオプションを設定する
     # 最初に呼ばれる
     pass
