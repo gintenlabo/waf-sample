@@ -1,0 +1,9 @@
+*~
+*.o
+*.pyc
+*.gch
+*.out
+build/
+.waf-*
+.waf3-*
+.lock-*
