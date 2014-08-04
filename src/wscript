@@ -5,6 +5,25 @@ def configure(conf):
   pass
 
 def build(bld):
+  shlib_name = 'waf-sample'
+  headers_prefix = '${PREFIX}/include/waf-sample';
+  use_libs = ''
+
+  srcs = [
+    'sample.cc',
+  ]
+  bld.shlib(
+    features = 'cxx',
+    source = srcs,
+    includes = '.',
+    target = shlib_name,
+    use=use_libs)
+
+  headers = [
+    'sample.hpp',
+  ]
+  bld.install_files(headers_prefix, headers)
+
   tests = [
     'sample-test.cc'
   ]
@@ -13,7 +32,8 @@ def build(bld):
     bld.program(
       features='gtest',
       source=test,
-      target=target)
+      target=target,
+      use=shlib_name+' '+use_libs)
 
 def shutdown(ctx):
   pass
