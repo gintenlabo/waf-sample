@@ -1,3 +1,5 @@
+from os.path import splitext
+
 def options(opt):
   pass
 
@@ -9,10 +11,11 @@ def build(bld):
   headers_prefix = '${PREFIX}/include/waf-sample';
   use_libs = ''
 
-  srcs = [
-    'sample.cc',
-    'subdir/foo.cc',
-  ]
+  src_pattern    = '**/*.cc'
+  header_pattern = '**/*.hpp'
+  test_pattern   = '**/*-test.cc'
+
+  srcs = bld.path.ant_glob(src_pattern, excl=test_pattern)
   bld.shlib(
     features = 'cxx',
     source = srcs,
@@ -20,20 +23,16 @@ def build(bld):
     target = shlib_name,
     use=use_libs)
 
-  headers = [
-    'sample.hpp',
-    'subdir/foo.cc',
-  ]
+  headers = bld.path.ant_glob(header_pattern)
   bld.install_files(headers_prefix, headers, relative_trick=True)
 
-  tests = [
-    'sample-test.cc'
-  ]
+  tests = bld.path.ant_glob(test_pattern)
   for test in tests:
-    target = test[0:test.rfind('.')]
+    filename = test.path_from(bld.path)
+    target, ext = splitext(filename)
     bld.program(
       features='gtest',
-      source=test,
+      source=filename,
       target=target,
       use=shlib_name+' '+use_libs)
 
