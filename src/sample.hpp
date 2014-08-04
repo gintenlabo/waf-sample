@@ -2,6 +2,6 @@
 
 namespace waf_sample {
 
-void same_function();
+void some_function();
 
 }
