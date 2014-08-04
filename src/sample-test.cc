@@ -1,5 +1,7 @@
+#include "sample.hpp"
+
 #include <gtest/gtest.h>
 
 TEST(sample, trivial) {
-  EXPECT_EQ(1, 1);
+  EXPECT_NO_THROW({ waf_sample::some_function(); });
 }
