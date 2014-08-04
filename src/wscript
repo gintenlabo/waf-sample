@@ -11,6 +11,7 @@ def build(bld):
 
   srcs = [
     'sample.cc',
+    'subdir/foo.cc',
   ]
   bld.shlib(
     features = 'cxx',
@@ -21,8 +22,9 @@ def build(bld):
 
   headers = [
     'sample.hpp',
+    'subdir/foo.cc',
   ]
-  bld.install_files(headers_prefix, headers)
+  bld.install_files(headers_prefix, headers, relative_trick=True)
 
   tests = [
     'sample-test.cc'
