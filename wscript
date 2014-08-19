@@ -7,15 +7,15 @@ blddir = 'build'
 subdirs='src'
 
 def options(opt):
-    opt.load('compiler_cxx unittest_gtest')
-    opt.recurse(subdirs)
+  opt.load('compiler_cxx unittest_gtest')
+  opt.recurse(subdirs)
 
 def configure(conf):
-    conf.load('compiler_cxx unittest_gtest')
-    conf.recurse(subdirs)
+  conf.load('compiler_cxx unittest_gtest')
+  conf.recurse(subdirs)
 
 def build(bld):
-    bld.recurse(subdirs)
+  bld.recurse(subdirs)
 
 def shutdown(ctx):
-    ctx.recurse(subdirs)
+  ctx.recurse(subdirs)
